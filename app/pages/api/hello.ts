@@ -3,7 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 
 type Data = {
-  name: string
+  data: Partial<{
+    [key: string]: string | string[];
+  }>
 }
 
 export default function handler(
@@ -12,5 +14,5 @@ export default function handler(
 ) {
   // var name=req.query["name"]!==undefined?req.query["name"][0]:""
   // res.status(200).json({ name:name })
-  res.status(200).json(req.query)
+  res.status(200).json({ data: req.query })
 }
